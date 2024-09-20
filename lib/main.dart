@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import './routes/first_route.dart';
+
 void main() {
   runApp(const MyApp());
 }
@@ -68,6 +70,13 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
 
+  void _navigateToFirstScreen() {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => const FirstRoute()),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     // This method is rerun every time setState is called, for instance as done
@@ -112,6 +121,9 @@ class _MyHomePageState extends State<MyHomePage> {
               '$_counter',
               style: Theme.of(context).textTheme.headlineMedium,
             ),
+            ElevatedButton(
+                onPressed: _navigateToFirstScreen,
+                child: const Text('First Route')),
           ],
         ),
       ),
