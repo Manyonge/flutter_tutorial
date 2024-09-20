@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'second_route.dart';
+
 class FirstRoute extends StatelessWidget {
   const FirstRoute({super.key});
   @override
@@ -11,7 +13,8 @@ class FirstRoute extends StatelessWidget {
       body: Center(
         child: ElevatedButton(
           onPressed: () {
-            Navigator.pushNamed(context, '/second');
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) => const SecondRoute()));
           },
           child: const Text('Open route'),
         ),
