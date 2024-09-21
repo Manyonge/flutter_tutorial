@@ -23,7 +23,7 @@ final activityProvider = AutoDisposeFutureProvider<Activity>.internal(
 );
 
 typedef ActivityRef = AutoDisposeFutureProviderRef<Activity>;
-String _$productHash() => r'9b61c51142316b7a91741b2f2c3c9d4ba24ef9a6';
+String _$productHash() => r'd3035b98b36a0b5d9ca8c1deae187b37d57f2e2e';
 
 /// See also [product].
 @ProviderFor(product)
@@ -37,7 +37,7 @@ final productProvider = AutoDisposeFutureProvider<Product>.internal(
 );
 
 typedef ProductRef = AutoDisposeFutureProviderRef<Product>;
-String _$categoriesHash() => r'6780a7824c4d02ac862765a66913e1d102169c96';
+String _$categoriesHash() => r'c58b22644760cdc66c3afeb284b4908320d221ec';
 
 /// See also [categories].
 @ProviderFor(categories)
@@ -51,5 +51,19 @@ final categoriesProvider = AutoDisposeFutureProvider<List<Category>>.internal(
 );
 
 typedef CategoriesRef = AutoDisposeFutureProviderRef<List<Category>>;
+String _$retailerHash() => r'70d2a2592b79982e71fcb2c46b5051e080f36cff';
+
+/// See also [retailer].
+@ProviderFor(retailer)
+final retailerProvider = AutoDisposeFutureProvider<Retailer>.internal(
+  retailer,
+  name: r'retailerProvider',
+  debugGetCreateSourceHash:
+      const bool.fromEnvironment('dart.vm.product') ? null : _$retailerHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
+
+typedef RetailerRef = AutoDisposeFutureProviderRef<Retailer>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member
