@@ -2,10 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import './models/activity.dart';
+import './models/product.dart';
 import './providers/provider.dart';
 
 void main() {
-  runApp(const ProviderScope(child: Home()));
+  runApp(const ProviderScope(child: MaterialApp(home: Home())));
 }
 
 /// The homepage of our application
@@ -25,16 +26,23 @@ class Home extends StatelessWidget {
         // - The result was modified locally (such as when performing side-effects)
         // ...
         final AsyncValue<Activity> activity = ref.watch(activityProvider);
+        final AsyncValue<Product> product = ref.watch(productProvider);
 
-        return Center(
-          /// Since network-requests are asynchronous and can fail, we need to
-          /// handle both error and loading states. We can use pattern matching for this.
-          /// We could alternatively use `if (activity.isLoading) { ... } else if (...)`
-          child: switch (activity) {
-            AsyncData(:final value) => Text('Activity: ${value.activity}'),
-            AsyncError() => const Text('Oops, something unexpected happened'),
-            _ => const CircularProgressIndicator(),
-          },
+        return Scaffold(
+          appBar: AppBar(
+            title: const Text('Flutter Riverpod Example'),
+          ),
+          body: Center(
+            child: product.when(
+              data: (product) => Text(product.name),
+              error: (error, stackTrace) => Text(' ${error.toString()}'),
+              loading: () => const CircularProgressIndicator(),
+            ),
+          ),
+          floatingActionButton: FloatingActionButton(
+            onPressed: () => ref.refresh(activityProvider),
+            child: const Icon(Icons.refresh),
+          ),
         );
       },
     );

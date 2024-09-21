@@ -23,5 +23,19 @@ final activityProvider = AutoDisposeFutureProvider<Activity>.internal(
 );
 
 typedef ActivityRef = AutoDisposeFutureProviderRef<Activity>;
+String _$productHash() => r'9ac1d64d15b15f74c410bc37549410873a263cce';
+
+/// See also [product].
+@ProviderFor(product)
+final productProvider = AutoDisposeFutureProvider<Product>.internal(
+  product,
+  name: r'productProvider',
+  debugGetCreateSourceHash:
+      const bool.fromEnvironment('dart.vm.product') ? null : _$productHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
+
+typedef ProductRef = AutoDisposeFutureProviderRef<Product>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member
