@@ -23,7 +23,7 @@ final activityProvider = AutoDisposeFutureProvider<Activity>.internal(
 );
 
 typedef ActivityRef = AutoDisposeFutureProviderRef<Activity>;
-String _$productHash() => r'9ac1d64d15b15f74c410bc37549410873a263cce';
+String _$productHash() => r'9b61c51142316b7a91741b2f2c3c9d4ba24ef9a6';
 
 /// See also [product].
 @ProviderFor(product)

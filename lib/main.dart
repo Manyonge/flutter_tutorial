@@ -40,7 +40,7 @@ class Home extends StatelessWidget {
             ),
           ),
           floatingActionButton: FloatingActionButton(
-            onPressed: () => ref.refresh(activityProvider),
+            onPressed: () => ref.refresh(productProvider),
             child: const Icon(Icons.refresh),
           ),
         );
