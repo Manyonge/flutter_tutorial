@@ -13,3 +13,13 @@ class Product with _$Product {
   factory Product.fromJson(Map<String, dynamic> json) =>
       _$ProductFromJson(json);
 }
+
+@freezed
+class Category with _$Category {
+  factory Category({
+    required String category,
+    required int id,
+  }) = _Category;
+  factory Category.fromJson(Map<String, dynamic> json) =>
+      _$CategoryFromJson(json);
+}

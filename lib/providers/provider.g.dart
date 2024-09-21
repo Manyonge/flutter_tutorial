@@ -37,5 +37,19 @@ final productProvider = AutoDisposeFutureProvider<Product>.internal(
 );
 
 typedef ProductRef = AutoDisposeFutureProviderRef<Product>;
+String _$categoriesHash() => r'6780a7824c4d02ac862765a66913e1d102169c96';
+
+/// See also [categories].
+@ProviderFor(categories)
+final categoriesProvider = AutoDisposeFutureProvider<List<Category>>.internal(
+  categories,
+  name: r'categoriesProvider',
+  debugGetCreateSourceHash:
+      const bool.fromEnvironment('dart.vm.product') ? null : _$categoriesHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
+
+typedef CategoriesRef = AutoDisposeFutureProviderRef<List<Category>>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member

@@ -31,3 +31,14 @@ Future<Product> product(ProductRef ref) async {
   // Finally, we convert the Map into an Activity instance.
   return Product.fromJson(json);
 }
+
+@riverpod
+Future<List<Category>> categories(CategoriesRef ref) async {
+  // Using package:http, we fetch a random activity from the Bored API.
+  final response = await http.get(
+      Uri.https('dripventory.storemint.shop', '/api/categories?retailerId=1'));
+  // Using dart:convert, we then decode the JSON payload into a Map data structure.
+  final json = jsonDecode(response.body) as Map<String, dynamic>;
+  // Finally, we convert the Map into an Activity instance.
+  return json.entries.map((entry) => Category.fromJson(entry.value)).toList();
+}

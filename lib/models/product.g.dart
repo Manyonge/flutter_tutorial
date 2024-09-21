@@ -19,3 +19,15 @@ Map<String, dynamic> _$$ProductImplToJson(_$ProductImpl instance) =>
       'price': instance.price,
       'stock': instance.stock,
     };
+
+_$CategoryImpl _$$CategoryImplFromJson(Map<String, dynamic> json) =>
+    _$CategoryImpl(
+      category: json['category'] as String,
+      id: (json['id'] as num).toInt(),
+    );
+
+Map<String, dynamic> _$$CategoryImplToJson(_$CategoryImpl instance) =>
+    <String, dynamic>{
+      'category': instance.category,
+      'id': instance.id,
+    };
